@@ -15,7 +15,7 @@ public class FacturaProductoServiceJPA implements FacturaProductoServiceInterfac
 
 	@Autowired
 	private FacturaProductoRepository facturaProductoRepo;
-	
+		
 	@Override
 	public List<FacturaProducto> buscarTodos() {
 		return facturaProductoRepo.findAll();

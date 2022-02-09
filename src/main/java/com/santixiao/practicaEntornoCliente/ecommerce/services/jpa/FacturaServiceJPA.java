@@ -45,5 +45,4 @@ public class FacturaServiceJPA implements FacturaServiceInterface {
 		facturaRepo.deleteById(id);
 		return "Borrado correctamente";
 	}
-
 }

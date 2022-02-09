@@ -1,10 +1,17 @@
 package com.santixiao.practicaEntornoCliente.ecommerce.entitys;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name="productos")
@@ -16,9 +23,14 @@ public class Producto {
 	private String nombre;
 	private String descripcion;
 	private Double precio;
-	private Integer oferta;
+	@ManyToOne
+	@JoinColumn(name ="oferta")
+	@JsonBackReference
+	private Oferta oferta;
 	private Integer cantidad;
 	private Boolean activo;
+	@ManyToMany(mappedBy = "productos")
+	private List<Categoria> categorias;
 	
 	public Integer getId() {
 		return id;
@@ -44,10 +56,10 @@ public class Producto {
 	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
-	public Integer getOferta() {
+	public Oferta getOferta() {
 		return oferta;
 	}
-	public void setOferta(Integer oferta) {
+	public void setOferta(Oferta oferta) {
 		this.oferta = oferta;
 	}
 	public Integer getCantidad() {

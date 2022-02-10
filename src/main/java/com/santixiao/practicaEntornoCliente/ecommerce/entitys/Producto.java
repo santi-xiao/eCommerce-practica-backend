@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -29,8 +30,22 @@ public class Producto {
 	private Oferta oferta;
 	private Integer cantidad;
 	private Boolean activo;
-	@ManyToMany(mappedBy = "productos")
+	@ManyToMany()
+	@JoinTable(
+			name = "producto_categoria",
+			joinColumns = @JoinColumn(name = "id_producto"),
+			inverseJoinColumns = @JoinColumn(name= "id_categoria")
+			)
 	private List<Categoria> categorias;
+	private Boolean publico;
+	
+	public List<Categoria> getCategorias(){
+		return this.categorias;
+	}
+	
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
+	}
 	
 	public Integer getId() {
 		return id;
@@ -74,11 +89,18 @@ public class Producto {
 	public void setActivo(Boolean activo) {
 		this.activo = activo;
 	}
+
+	public Boolean getPublico() {
+		return publico;
+	}
+	public void setPublico(Boolean publico) {
+		this.publico = publico;
+	}
+	
 	@Override
 	public String toString() {
 		return "Producto [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio
-				+ ", oferta=" + oferta + ", cantidad=" + cantidad + ", activo=" + activo + "]";
+				+ ", oferta=" + oferta + ", cantidad=" + cantidad + ", activo=" + activo + ", categorias=" + categorias
+				+ ", publico=" + publico + "]";
 	}
-	
-	
 }

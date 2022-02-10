@@ -45,5 +45,4 @@ public class ProductoServiceJPA implements ProductoServiceInterface {
 		productoRepo.deleteById(id);
 		return "Borrado correctamente";
 	}
-
 }

@@ -28,7 +28,7 @@ public class ProductoController {
 	}
 	
 	@GetMapping("/producto/{id}")
-	public Producto buscarPòrId(@PathVariable("id") int id) {
+	public Producto buscarPorId(@PathVariable("id") int id) {
 		return productoService.buscarPorId(id);
 	}
 	

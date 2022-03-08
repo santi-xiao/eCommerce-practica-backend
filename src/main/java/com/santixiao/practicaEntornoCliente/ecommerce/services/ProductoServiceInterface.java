@@ -15,4 +15,6 @@ public interface ProductoServiceInterface {
 	Producto actualizar(Producto producto);
 	
 	String borrar(Integer id);
+	
+	List<Producto> buscarProductosporCategoria(String nombre);
 	}

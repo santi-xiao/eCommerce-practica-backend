@@ -1,14 +1,11 @@
 package com.santixiao.practicaEntornoCliente.ecommerce.entitys;
 
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -30,23 +27,18 @@ public class Producto {
 	private Oferta oferta;
 	private Integer cantidad;
 	private Boolean activo;
-	@ManyToMany()
-	@JoinTable(
-			name = "producto_categoria",
-			joinColumns = @JoinColumn(name = "id_producto"),
-			inverseJoinColumns = @JoinColumn(name= "id_categoria")
-			)
-	private List<Categoria> categorias;
+	@ManyToOne
+	@JoinColumn(name="categoria")
+	private Categoria categoria;
 	private Boolean publico;
 	
-	public List<Categoria> getCategorias(){
-		return this.categorias;
-	}
 	
-	public void setCategorias(List<Categoria> categorias) {
-		this.categorias = categorias;
+	public Categoria getCategoria() {
+		return categoria;
 	}
-	
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -100,7 +92,7 @@ public class Producto {
 	@Override
 	public String toString() {
 		return "Producto [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio
-				+ ", oferta=" + oferta + ", cantidad=" + cantidad + ", activo=" + activo + ", categorias=" + categorias
+				+ ", oferta=" + oferta + ", cantidad=" + cantidad + ", activo=" + activo + ", categoria=" + categoria
 				+ ", publico=" + publico + "]";
 	}
 }

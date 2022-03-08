@@ -20,6 +20,15 @@ public class UsuarioServiceJPA implements UsuarioServiceInterface {
 	public List<Usuario> buscarTodos() {
 		return usuarioRepo.findAll();
 	}
+	
+	@Override
+	public Usuario buscarPorId(Integer id) {
+		Optional<Usuario> usuario = usuarioRepo.findById(id);
+		if(usuario.isPresent()) {
+			return usuario.get();
+		}
+		return null;
+	}
 
 	@Override
 	public Usuario guardar(Usuario usuario) {
@@ -36,14 +45,4 @@ public class UsuarioServiceJPA implements UsuarioServiceInterface {
 		usuarioRepo.deleteById(id);
 		return "Borrado correctamente";
 	}
-
-	@Override
-	public Usuario buscarPorId(Integer id) {
-		 Optional<Usuario> usuario = usuarioRepo.findById(id);
-		 if(usuario.isPresent()) {
-			 return usuario.get();
-		 }
-		 return null;
-	}
-
 }

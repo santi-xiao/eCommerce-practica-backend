@@ -45,4 +45,9 @@ public class ProductoServiceJPA implements ProductoServiceInterface {
 		productoRepo.deleteById(id);
 		return "Borrado correctamente";
 	}
+
+	@Override
+	public List<Producto> buscarProductosporCategoria(String nombre) {
+		return productoRepo.findByCategoriaNombre(nombre);
+	}
 }

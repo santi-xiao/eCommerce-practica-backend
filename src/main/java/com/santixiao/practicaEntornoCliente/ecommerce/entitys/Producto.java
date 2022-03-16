@@ -20,12 +20,13 @@ public class Producto {
 	private Integer id;
 	private String nombre;
 	private String descripcion;
+	private String imagenDni;
+	private String imagenCuerpo;
 	private Double precio;
 	@ManyToOne
 	@JoinColumn(name ="oferta")
 	@JsonBackReference
 	private Oferta oferta;
-	private Integer cantidad;
 	private Boolean activo;
 	@ManyToOne
 	@JoinColumn(name="categoria")
@@ -69,11 +70,17 @@ public class Producto {
 	public void setOferta(Oferta oferta) {
 		this.oferta = oferta;
 	}
-	public Integer getCantidad() {
-		return cantidad;
+	public String getImagenDni() {
+		return imagenDni;
 	}
-	public void setCantidad(Integer cantidad) {
-		this.cantidad = cantidad;
+	public void setImagenDni(String imagenDni) {
+		this.imagenDni = imagenDni;
+	}
+	public String getImagenCuerpo() {
+		return imagenCuerpo;
+	}
+	public void setImagenCuerpo(String imagenCuerpo) {
+		this.imagenCuerpo = imagenCuerpo;
 	}
 	public Boolean getActivo() {
 		return activo;
@@ -88,11 +95,11 @@ public class Producto {
 	public void setPublico(Boolean publico) {
 		this.publico = publico;
 	}
-	
 	@Override
 	public String toString() {
-		return "Producto [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio
-				+ ", oferta=" + oferta + ", cantidad=" + cantidad + ", activo=" + activo + ", categoria=" + categoria
-				+ ", publico=" + publico + "]";
+		return "Producto [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", imagenDni=" + imagenDni
+				+ ", imagenCuerpo=" + imagenCuerpo + ", precio=" + precio + ", oferta=" + oferta + ", activo=" + activo
+				+ ", categoria=" + categoria + ", publico=" + publico + "]";
 	}
+	
 }

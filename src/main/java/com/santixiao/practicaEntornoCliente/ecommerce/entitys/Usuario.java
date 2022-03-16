@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -30,8 +32,8 @@ public class Usuario {
 	private String telefono;
 	private String contraseña;
 	private String email;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fecha_nacimiento;
-	private Integer carrito;
 	private Boolean activo;
 	@OneToMany(mappedBy="usuario")
 	@JsonManagedReference
@@ -85,12 +87,6 @@ public class Usuario {
 	public void setFecha_nacimiento(Date fecha_nacimiento) {
 		this.fecha_nacimiento = fecha_nacimiento;
 	}
-	public Integer getCarrito() {
-		return carrito;
-	}
-	public void setCarrito(Integer carrito) {
-		this.carrito = carrito;
-	}
 	public Boolean getActivo() {
 		return activo;
 	}
@@ -113,7 +109,7 @@ public class Usuario {
 	public String toString() {
 		return "Usuario [id=" + id + ", tipo=" + tipo + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion="
 				+ direccion + ", telefono=" + telefono + ", contraseña=" + contraseña + ", email=" + email
-				+ ", fecha_nacimiento=" + fecha_nacimiento + ", carrito=" + carrito + ", activo=" + activo
+				+ ", fecha_nacimiento=" + fecha_nacimiento + ", activo=" + activo
 				+ ", facturas=" + facturas + "]";
 	}
 }

@@ -46,4 +46,9 @@ public class ProductoController {
 	public String borrar(@PathVariable("id") int id) {
 		return productoService.borrar(id);
 	}
+	
+	@GetMapping("/{nombre}/todos")
+	public List<Producto> buscarPorCategoria(@PathVariable String nombre){
+		return productoService.buscarProductosporCategoria(nombre);
+	}
 }

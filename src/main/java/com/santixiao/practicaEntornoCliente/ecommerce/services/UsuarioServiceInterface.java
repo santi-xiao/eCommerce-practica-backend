@@ -15,4 +15,6 @@ public interface UsuarioServiceInterface {
 	Usuario actualizar(Usuario usuario);
 	
 	String borrar(Integer id);
+	
+	Usuario login(String email, String contraseña);
 }

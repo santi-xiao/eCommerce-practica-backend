@@ -6,4 +6,5 @@ import com.santixiao.practicaEntornoCliente.ecommerce.entitys.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
+	Usuario findByEmailAndContraseña(String email, String contraseña);
 }

@@ -32,6 +32,8 @@ public class UsuarioServiceJPA implements UsuarioServiceInterface {
 
 	@Override
 	public Usuario guardar(Usuario usuario) {
+		String pass = usuario.getContraseña();
+		
 		return usuarioRepo.save(usuario);
 	}
 
@@ -44,5 +46,10 @@ public class UsuarioServiceJPA implements UsuarioServiceInterface {
 	public String borrar(Integer id) {
 		usuarioRepo.deleteById(id);
 		return "Borrado correctamente";
+	}
+
+	@Override
+	public Usuario login(String email, String contraseña) {
+		return usuarioRepo.findByEmailAndContraseña(email, contraseña);
 	}
 }
